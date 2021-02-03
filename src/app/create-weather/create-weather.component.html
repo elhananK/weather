@@ -1,0 +1,34 @@
+<!-- Toolbar -->
+<mat-toolbar color="warn" class="header">
+  <span class="title-center mat-h1">What's The Wheather Today?</span>
+</mat-toolbar>
+
+<!-- wrapper -->
+<form [formGroup]="myForm" (ngSubmit)="submitForm()">
+  <div style="display: flex; font-size: 14px;">
+    <!-- Cities -->
+    <mat-form-field style="margin-right: 40px;">
+      <mat-label>Select City</mat-label>
+      <mat-select formControlName="cityName">
+        <mat-option  *ngFor="let city of cityArray.value" [value]="city">{{city}}
+        </mat-option>
+      </mat-select>
+      <!-- error -->
+      <mat-error *ngIf="errorHandling('cityName', 'required')">
+        You must provide <strong>City</strong> to get the Weather
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Name -->
+    <mat-form-field class="example-full-width" style="margin-right: 40px;">
+      <input matInput placeholder="{{UNITS}}" formControlName="unit">
+    </mat-form-field>
+
+    <!-- Submit -->
+    <div class="button-wrapper">
+      <button mat-flat-button>
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</form>
